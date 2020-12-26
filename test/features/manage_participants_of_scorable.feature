@@ -28,3 +28,17 @@ Feature: Scorable can have Participants
       | handle        |
       | PARTICIPANT_1 |
 
+
+  Scenario: Remove a player that wasn't added
+    Given user created a game with name "Test"
+    And user added the following players to the game
+      | handle        |
+      | PARTICIPANT_1 |
+      | PARTICIPANT_2 |
+    When user removes player with handle "PARTICIPANT_3" from the game
+    # TODO: of een exception op de command handler?
+    Then the game should have the following players
+      | handle        |
+      | PARTICIPANT_1 |
+      | PARTICIPANT_2 |
+
