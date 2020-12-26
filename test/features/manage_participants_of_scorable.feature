@@ -17,6 +17,18 @@ Feature: Scorable can have Participants
       | PARTICIPANT_1 |
 
 
+  Scenario: Add an already added player
+    Given user created a game with name "Test"
+    And user added the following players to the game
+      | handle        |
+      | PARTICIPANT_1 |
+    # TODO: of exception gooien via command handler?
+    When user adds player with handle "PARTICIPANT_1" to the game
+    Then the game should have the following players
+      | handle        |
+      | PARTICIPANT_1 |
+
+
   Scenario: Remove a single player
     Given user created a game with name "Test"
     And user added the following players to the game
