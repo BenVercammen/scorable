@@ -1,0 +1,21 @@
+syntax = "proto3";
+package io.score.scorable;
+
+import "identifiers.proto";
+
+message CreateScorable {
+  io.score.identifiers.ScorableId scorableId = 1;
+  string name = 2;
+}
+
+message AddParticipantToScorable {
+  io.score.identifiers.ScorableId scorableId = 1;
+  io.score.identifiers.ParticipantId participantId = 2;
+  string participantName = 3;
+}
+
+message RemoveParticipantFromScorable {
+  io.score.identifiers.ScorableId scorableId = 1;
+  io.score.identifiers.ParticipantId participantId = 2;
+  string reason = 3;
+}

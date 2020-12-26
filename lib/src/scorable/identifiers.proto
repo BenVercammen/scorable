@@ -1,0 +1,10 @@
+syntax = "proto3";
+package io.score.identifiers;
+
+message ScorableId {
+  string uuid = 1;
+}
+
+message ParticipantId {
+  string uuid = 1;
+}

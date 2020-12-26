@@ -1,0 +1,29 @@
+buildscript {
+
+}
+
+defaultTasks(
+        'protocIdentifiers',
+        'protocCommands',
+        'protocEvents'
+)
+
+task protocIdentifiers(type: Exec) {
+    workingDir('./lib/src/scorable');
+    executable 'protoc'
+    args('--dart_out=.', '--proto_path=.', './identifiers.proto')
+}
+
+task protocCommands(type: Exec) {
+    dependsOn(protocIdentifiers)
+    workingDir('./lib/src/scorable');
+    executable 'protoc'
+    args('--dart_out=.', '--proto_path=.', './commands.proto')
+}
+
+task protocEvents(type: Exec) {
+    dependsOn(protocIdentifiers)
+    workingDir('./lib/src/scorable');
+    executable 'protoc'
+    args('--dart_out=.', '--proto_path=.', './events.proto')
+}
